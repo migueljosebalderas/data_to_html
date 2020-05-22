@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  
+  <titleData Results</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Palatino, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+    
+    td:nth-of-type(0):before { content: "Nombre"; }
+td:nth-of-type(0):before { content: "Apellidos"; }
+td:nth-of-type(0):before { content: "Edad"; }
+
+  }
+
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body {
+      padding: 0;
+      margin: 0;
+      width: 320px; }
+    }
+
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body {
+      width: 495px;
+    }
+  }
+
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
+</head> 
+
+<body>
+	<code>
+		SQL> Select * from datos where 1=1
+	</code>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr> <th>Nombre</th><th>Apellidos</th><th>Edad</th>
+</tr></thead>
+<tbody id="data"> 
+	<tr>
+<td>Juan</td><td>Perez</td><td>20</td></tr>
+<tr>
+<td>Licia</td><td>Carrillo</td><td>21</td></tr>
+<tr>
+<td>Carmen</td><td>Gomez</td><td>22</td></tr>
+<tr>
+<td>Alicie</td><td>Smith</td><td>23</td></tr>
+<tr>
+<td>Pedro</td><td>Lopez</td><td>24</td></tr>
+
+</tbody></table>
+<p><span>&#171;</span>MB-HTML<span>&#187;</span></p>
+</body></html>
+    
